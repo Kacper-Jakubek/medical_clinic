@@ -2,6 +2,7 @@ package pl.wsb.lab;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pl.wsb.lab.people.Patient;
 
 public class PatientTest {
 

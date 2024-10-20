@@ -1,5 +1,7 @@
 package pl.wsb.lab;
 
+import pl.wsb.lab.people.Patient;
+
 import java.util.List;
 
 public class Clinic {

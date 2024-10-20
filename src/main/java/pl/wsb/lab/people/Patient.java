@@ -1,9 +1,6 @@
-package pl.wsb.lab;
+package pl.wsb.lab.people;
 
-public class Patient {
-
-    private String firstName;
-    private String lastName;
+public class Patient extends Person{
 
 
     public Patient(String firsName, String lastName) {
