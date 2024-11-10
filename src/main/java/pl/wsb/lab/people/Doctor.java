@@ -1,20 +1,32 @@
 package pl.wsb.lab.people;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class Doctor extends Person {
-    private MedicalSpecialty specialty;
+    private final ArrayList<MedicalSpecialty> specialties;
+    private final UUID id;
 
-    public Doctor(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber, String email, String pesel, MedicalSpecialty specialty) {
+    public Doctor(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber, String email, String pesel, ArrayList<MedicalSpecialty> specialties) {
         super(firstName, lastName, dateOfBirth, phoneNumber, email, pesel);
-        this.specialty = specialty;
+        this.id = UUID.randomUUID();
+        this.specialties = specialties;
     }
 
-    public MedicalSpecialty getSpecialty() {
-        return specialty;
+    public UUID getId() {
+        return id;
     }
 
-    public void setSpecialty(MedicalSpecialty specialty) {
-        this.specialty = specialty;
+    public ArrayList<MedicalSpecialty> getSpecialties() {
+        return specialties;
+    }
+
+    public void addSpecialty(MedicalSpecialty specialty) {
+        this.specialties.add(specialty);
+    }
+
+    public void removeSpecialty(MedicalSpecialty specialty) {
+        this.specialties.remove(specialty);
     }
 }

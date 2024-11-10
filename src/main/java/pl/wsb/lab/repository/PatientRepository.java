@@ -2,24 +2,29 @@ package pl.wsb.lab.repository;
 
 import pl.wsb.lab.people.Patient;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class PatientRepository {
-    private LinkedList<Patient> patients = new LinkedList<>();
+    private final HashMap<String, Patient> patients = new HashMap<>();
 
-    public PatientRepository(LinkedList<Patient> patients) {
-        this.patients = patients;
+    public PatientRepository() {
+    }
+
+    public void addPatient(Patient patient) {
+        patients.put(patient.getPesel(), patient);
     }
 
     public Patient getPatientByPesel(String pesel) {
+        return patients.get(pesel);
+    }
+
+    public Patient getPatientByLastName(String lastName) {
         for (Patient patient : patients) {
-            if (patient.getPesel().equals(pesel)) {
+            if (patient.getLastName().equals(lastName)) {
                 return patient;
             }
         }
         return null;
     }
-
-    public Patient getPatientBy
 }

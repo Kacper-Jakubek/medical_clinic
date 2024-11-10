@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Person {
-    private UUID id;
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
@@ -13,21 +12,12 @@ public class Person {
     private String pesel;
 
     public Person(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber, String email, String pesel) {
-        this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.pesel = pesel;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getFirstName() {
