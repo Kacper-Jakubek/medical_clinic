@@ -1,19 +1,18 @@
 package pl.wsb.lab;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Schedule
 {
     private int doctorId;
-    private Map<DayOfWeek, WorkingHours> schedule;
+    private List<WorkingHours> workingHours;
 
     public Schedule(int doctorId)
     {
         this.doctorId = doctorId;
-        this.schedule = new HashMap<>();
+        this.workingHours = new ArrayList<>();
     }
 
     public int getDoctorId()
@@ -21,64 +20,29 @@ public class Schedule
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId)
+    public List<WorkingHours> getWorkingHours()
     {
-        this.doctorId = doctorId;
+        return workingHours;
     }
 
-    //add working hours for a specific day
-    public void addWorkingHours(DayOfWeek day, LocalTime start, LocalTime end)
+    public void addWorkingHours(WorkingHours hours)
     {
-        schedule.put(day, new WorkingHours(start, end));
+        this.workingHours.add(hours);
     }
 
-    public WorkingHours getWorkingHours(DayOfWeek day)
+    public List<WorkingHours> getNextWeekSchedule()
     {
-        return schedule.get(day);
-    }
+        LocalDate today = LocalDate.now();
+        LocalDate endOfNextWeek = today.plusDays(7);
 
-    public Map<DayOfWeek, WorkingHours> getSchedule()
-    {
-        return schedule;
-    }
-
-    public static class WorkingHours
-    {
-        private LocalTime start;
-        private LocalTime end;
-
-        public WorkingHours(LocalTime start, LocalTime end)
+        List<WorkingHours> nextWeekSchedule = new ArrayList<>();
+        for (WorkingHours hours : workingHours)
         {
-            this.start = start;
-            this.end = end;
+            if (!hours.getDate().isBefore(today) && !hours.getDate().isAfter(endOfNextWeek))
+            {
+                nextWeekSchedule.add(hours);
+            }
         }
-
-        public LocalTime getStart()
-        {
-            return start;
-        }
-
-        public LocalTime getEnd()
-        {
-            return end;
-        }
-
-        @Override
-        public String toString()
-        {
-            return "from " + start + " to " + end;
-        }
-    }
-
-    @Override
-    public String toString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Doctor ID: ").append(doctorId).append("\nSchedule:\n");
-        for (DayOfWeek day : schedule.keySet())
-        {
-            sb.append(day).append(": ").append(schedule.get(day)).append("\n");
-        }
-        return sb.toString();
+        return nextWeekSchedule;
     }
 }
