@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import pl.wsb.lab.medicalclinic.shared.model.ContactInfo;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Collections;
+import java.util.Set;
+import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DoctorTest {
 
