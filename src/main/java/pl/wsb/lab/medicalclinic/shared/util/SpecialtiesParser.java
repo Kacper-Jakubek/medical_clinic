@@ -2,9 +2,10 @@ package pl.wsb.lab.medicalclinic.shared.util;
 
 import pl.wsb.lab.medicalclinic.doctor.MedicalSpecialty;
 
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SpecialtiesParser {
 

@@ -31,4 +31,38 @@ public class Doctor extends Person {
     public void removeSpecialty(MedicalSpecialty specialty) {
         this.specialties.remove(specialty);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Doctor doctor = (Doctor) o;
+        return Objects.equals(id, doctor.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
+    }
+
+    private String specialtiesToString() {
+        StringJoiner specialtiesString = new StringJoiner(", ");
+        for (MedicalSpecialty specialty : specialties) {
+            specialtiesString.add(specialty.toString());
+        }
+        return specialtiesString.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                "firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", dateOfBirth=" + getDateOfBirth().toString() +
+                ", contactInfo=" + getContactInfo().toString() +
+                ", pesel='" + getPesel() + '\'' +
+                ", specialties=" + specialtiesToString() +
+                '}';
+    }
 }
