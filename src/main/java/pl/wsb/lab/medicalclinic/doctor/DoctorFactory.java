@@ -6,6 +6,7 @@ import pl.wsb.lab.medicalclinic.shared.util.SpecialtiesParser;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.UUID;
 
 public class DoctorFactory {
 
@@ -16,7 +17,8 @@ public class DoctorFactory {
 
     public static Doctor createDoctor(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
         PersonValidator.validatePersonData(firstName, lastName, dateOfBirth, contactInfo, pesel);
-        return new Doctor(firstName, lastName, dateOfBirth, contactInfo, pesel, specialties);
+        UUID id = UUID.randomUUID();
+        return new Doctor(id, firstName, lastName, dateOfBirth, contactInfo, pesel, specialties);
     }
 
     public static Doctor createDoctor(String firstName, String lastName, String dateOfBirth, String phoneNumber, String email, String pesel, String medicalSpecialties) {

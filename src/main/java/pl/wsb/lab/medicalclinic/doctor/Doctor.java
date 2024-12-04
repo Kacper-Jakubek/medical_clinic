@@ -10,9 +10,9 @@ public class Doctor extends Person {
     private final Set<MedicalSpecialty> specialties;
     private final UUID id;
 
-    Doctor(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
+    Doctor(UUID id, String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
         super(firstName, lastName, dateOfBirth, contactInfo, pesel);
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.specialties = specialties != null ? new HashSet<>(specialties) : new HashSet<>();
     }
 
