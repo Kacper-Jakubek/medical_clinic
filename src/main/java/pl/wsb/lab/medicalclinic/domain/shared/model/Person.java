@@ -1,7 +1,6 @@
-package pl.wsb.lab.people;
+package pl.wsb.lab.medicalclinic.domain.shared.model;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class Person {
     private String firstName;
@@ -67,4 +66,13 @@ public class Person {
     public void setPesel(String pesel) {
         this.pesel = pesel;
     }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public int getAge() {
+        return LocalDate.now().getYear() - this.dateOfBirth.getYear();
+    }
+
 }

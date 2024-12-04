@@ -1,6 +1,6 @@
 package pl.wsb.lab.utils;
 
-import pl.wsb.lab.people.MedicalSpecialty;
+import pl.wsb.lab.medicalclinic.domain.doctor.model.MedicalSpecialty;
 
 import java.util.ArrayList;
 import java.util.Arrays;

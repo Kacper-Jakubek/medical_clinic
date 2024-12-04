@@ -1,4 +1,4 @@
-package pl.wsb.lab.people;
+package pl.wsb.lab.medicalclinic.domain.doctor.model;
 
 public enum MedicalSpecialty {
     FAMILY_MEDICINE("Primary care for individuals and families"),

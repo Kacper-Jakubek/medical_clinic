@@ -5,14 +5,14 @@
 #### Wymagania funkcjonalne
 
 ##### Pacjenci
-- [ ] Utwórz profil nowego pacjenta zawierający:
-    - [ ] Imię
-    - [ ] Nazwisko
-    - [ ] Nr PESEL
-    - [ ] Data urodzenia
-    - [ ] Wiek
-    - [ ] Telefon kontaktowy
-    - [ ] Adres mailowy
+- [x] Utwórz profil nowego pacjenta zawierający:
+    - [x] Imię
+    - [x] Nazwisko
+    - [x] Nr PESEL
+    - [x] Data urodzenia
+    - [x] Wiek
+    - [x] Telefon kontaktowy
+    - [x] Adres mailowy
 - [ ] Dodaj możliwość:
     - [ ] Wyszukiwania pacjenta po numerze PESEL i wyświetlenia jego danych.
     - [ ] Wyszukiwania pacjentów po nazwisku i wyświetlenia danych wszystkich znalezionych osób.

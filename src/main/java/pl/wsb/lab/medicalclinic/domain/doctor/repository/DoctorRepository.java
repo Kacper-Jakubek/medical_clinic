@@ -1,16 +1,12 @@
-package pl.wsb.lab.repository;
+package pl.wsb.lab.medicalclinic.domain.doctor.repository;
 
-import pl.wsb.lab.people.Doctor;
+import pl.wsb.lab.medicalclinic.domain.doctor.model.Doctor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class DoctorRepository {
     private final HashMap<UUID, Doctor> doctors = new HashMap<>();
-
-    public DoctorRepository() {
-    }
 
     public Doctor getDoctorById(UUID id) {
         return doctors.get(id);

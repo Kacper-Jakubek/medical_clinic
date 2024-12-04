@@ -1,4 +1,6 @@
-package pl.wsb.lab.people;
+package pl.wsb.lab.medicalclinic.domain.doctor.model;
+
+import pl.wsb.lab.medicalclinic.domain.shared.model.Person;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
