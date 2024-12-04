@@ -13,21 +13,21 @@
     - [x] Wiek
     - [x] Telefon kontaktowy
     - [x] Adres mailowy
-- [ ] Dodaj możliwość:
-    - [ ] Wyszukiwania pacjenta po numerze PESEL i wyświetlenia jego danych.
-    - [ ] Wyszukiwania pacjentów po nazwisku i wyświetlenia danych wszystkich znalezionych osób.
-- [ ] Zaimplementuj testy jednostkowe.
+- [x] Dodaj możliwość:
+    - [x] Wyszukiwania pacjenta po numerze PESEL i wyświetlenia jego danych.
+    - [x] Wyszukiwania pacjentów po nazwisku i wyświetlenia danych wszystkich znalezionych osób.
+- [x] Zaimplementuj testy jednostkowe.
 
 ##### Personel medyczny
-- [ ] Utwórz profil lekarza zawierający:
-    - [ ] Dane osobowe i kontaktowe (takie jak u pacjenta).
-    - [ ] ID lekarza.
-    - [ ] Specjalizacje (np. kardiolog, ortopeda).
-- [ ] Dodaj możliwość:
-    - [ ] Dodania nowej specjalizacji dla istniejącego lekarza.
-    - [ ] Wyszukiwania lekarza po ID i wyświetlenia jego danych oraz specjalizacji.
-    - [ ] Wyszukiwania lekarzy o określonej specjalizacji i wyświetlenia ich danych oraz ID.
-- [ ] Zaimplementuj testy jednostkowe.
+- [x] Utwórz profil lekarza zawierający:
+    - [x] Dane osobowe i kontaktowe (takie jak u pacjenta).
+    - [x] ID lekarza.
+    - [x] Specjalizacje (np. kardiolog, ortopeda).
+- [x] Dodaj możliwość:
+    - [x] Dodania nowej specjalizacji dla istniejącego lekarza.
+    - [x] Wyszukiwania lekarza po ID i wyświetlenia jego danych oraz specjalizacji.
+    - [x] Wyszukiwania lekarzy o określonej specjalizacji i wyświetlenia ich danych oraz ID.
+- [x] Zaimplementuj testy jednostkowe.
 
 ##### Dokumentacja
 - [ ] Przygotuj prostą dokumentację zawierającą diagram klas:
