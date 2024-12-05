@@ -28,6 +28,13 @@
                         -javaagent:"${settings.localRepository}/net/bytebuddy/byte-buddy-agent/1.15.4/byte-buddy-agent-1.15.4.jar"
                         ${argLine}
                     </argLine>
+                    <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+                    <forkCount>1</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <jvmArgs>
+                        <jvmArg>-Xms512m</jvmArg>
+                        <jvmArg>-Xmx2048m</jvmArg>
+                    </jvmArgs>
                 </configuration>
             </plugin>
         </plugins>
