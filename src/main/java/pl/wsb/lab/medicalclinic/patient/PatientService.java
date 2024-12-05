@@ -10,6 +10,13 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
+    public void addPatient(Patient patient) {
+        patientRepository.addPatient(patient);
+    }
+
+    public void removePatient(Patient patient) {
+        patientRepository.removePatient(patient);
+    }
 
     public List<Patient> searchByLastName(String lastName) {
         return this.patientRepository.findByLastName(lastName);

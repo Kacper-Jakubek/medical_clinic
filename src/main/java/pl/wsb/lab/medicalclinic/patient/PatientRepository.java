@@ -26,4 +26,8 @@ public class PatientRepository {
         }
         return matchingPatients;
     }
+
+    public void removePatient(Patient patient) {
+        patients.remove(patient.getPesel());
+    }
 }
