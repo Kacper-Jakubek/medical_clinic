@@ -8,10 +8,12 @@ import java.util.UUID;
 public class InMemoryScheduleRepository implements ScheduleRepository {
     private final Map<UUID, Schedule> schedules = new HashMap<>();
 
+    @Override
     public Optional<Schedule> findByDoctorId(UUID doctorId) {
         return Optional.ofNullable(schedules.get(doctorId));
     }
 
+    @Override
     public void addSchedule(Schedule schedule) {
         schedules.put(schedule.getDoctorId(), schedule);
     }

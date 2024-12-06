@@ -10,16 +10,16 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PatientRepositoryTest {
+class InMemoryPatientRepositoryTest {
 
-    private PatientRepository patientRepository;
+    private InMemoryPatientRepository patientRepository;
     private Patient patient1;
     private Patient patient2;
     private Patient patient3;
 
     @BeforeEach
     void setUp() {
-        patientRepository = new PatientRepository();
+        patientRepository = new InMemoryPatientRepository();
         patient1 = new Patient("John", "Doe", LocalDate.of(1980, 1, 1), new ContactInfo("123456789", "john.doe@example.com"), "12345678901");
         patient2 = new Patient("Jane", "Doe", LocalDate.of(1985, 2, 2), new ContactInfo("987654321", "jane.doe@example.com"), "12345678902");
         patient3 = new Patient("Alice", "Smith", LocalDate.of(1990, 3, 3), new ContactInfo("555555555", "alice.smith@example.com"), "12345678903");

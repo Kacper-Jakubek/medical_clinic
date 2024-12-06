@@ -4,8 +4,12 @@ import pl.wsb.lab.medicalclinic.doctor.Doctor;
 import pl.wsb.lab.medicalclinic.doctor.DoctorRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 public class ScheduleService {
     private final DoctorRepository doctorRepository;
@@ -33,5 +37,23 @@ public class ScheduleService {
         } else {
             throw new IllegalArgumentException("Doctor with ID: '" + doctorId.toString() + "' not found.");
         }
+    }
+
+    public boolean isDoctorAvailable(UUID doctorId, LocalDateTime timeFrom, LocalDateTime timeTo) {
+        Optional<Schedule> scheduleOptional = scheduleRepository.findByDoctorId(doctorId);
+        if (scheduleOptional.isPresent()) {
+            Schedule schedule = scheduleOptional.get();
+            for (Map.Entry<LocalDate, List<WorkingHours>> entry : schedule.getWorkingHours().entrySet()) {
+                if (!entry.getKey().isEqual(timeFrom.toLocalDate())) {
+                    continue;
+                }
+                for (WorkingHours workingHours : entry.getValue()) {
+                    if (workingHours.getStartTime().isBefore(timeFrom.toLocalTime()) && workingHours.getEndTime().isAfter(timeTo.toLocalTime())) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -3,10 +3,13 @@ package pl.wsb.lab.medicalclinic.schedule;
 import pl.wsb.lab.medicalclinic.shared.util.DateTimeParser;
 import pl.wsb.lab.medicalclinic.shared.util.WorkingHoursValidator;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class ScheduleFactory {
     // Private constructor to prevent instantiation

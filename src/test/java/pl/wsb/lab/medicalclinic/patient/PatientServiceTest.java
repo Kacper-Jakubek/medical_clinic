@@ -20,7 +20,7 @@ public class PatientServiceTest {
 
     @BeforeEach
     public void setUp() {
-        patientRepository = Mockito.mock(PatientRepository.class);
+        patientRepository = Mockito.mock(InMemoryPatientRepository.class);
         patientService = new PatientService(patientRepository);
     }
 

@@ -1,0 +1,43 @@
+package pl.wsb.lab.medicalclinic.appointment;
+
+import pl.wsb.lab.medicalclinic.patient.Patient;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+public class InMemoryAppointmentRepository implements AppointmentRepository {
+    private final List<Appointment> appointments = new ArrayList<>();
+
+    @Override
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
+    }
+
+    @Override
+    public List<Appointment> findByTime(LocalDateTime time) {
+        return appointments.stream()
+                .filter(appointment -> appointment.getStartTime().isBefore(time) && appointment.getEndTime().isAfter(time))
+                .toList();
+    }
+
+    @Override
+    public List<Appointment> findByPatient(Patient patient) {
+        return appointments.stream()
+                .filter(appointment -> appointment.getPatient().equals(patient))
+                .toList();
+    }
+
+    @Override
+    public void removeAppointment(Appointment appointment) {
+        appointments.remove(appointment);
+    }
+
+    @Override
+    public List<Appointment> findByDoctorId(UUID doctorId) {
+        return appointments.stream()
+                .filter(appointment -> appointment.getDoctor().getId().equals(doctorId))
+                .toList();
+    }
+}
