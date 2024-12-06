@@ -49,7 +49,7 @@ public class PersonValidator {
     public static LocalDate dateFromString(String date) {
         LocalDate dob;
         try {
-            dob = DateParser.parseDate(date);
+            dob = DateTimeParser.parseDate(date);
             return dob;
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException("Provided date of birth is not in the correct format. Accepted formats are: \"yyyy-MM-dd\", \"yyyy.MM.dd\", \"dd.MM.yyyy\", \"dd-MM-yyyy\"", e);

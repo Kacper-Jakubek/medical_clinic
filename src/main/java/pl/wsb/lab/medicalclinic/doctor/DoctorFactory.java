@@ -15,6 +15,11 @@ public class DoctorFactory {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
+    public static Doctor createDoctor(UUID doctorId, String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
+        PersonValidator.validatePersonData(firstName, lastName, dateOfBirth, contactInfo, pesel);
+        return new Doctor(doctorId, firstName, lastName, dateOfBirth, contactInfo, pesel, specialties);
+    }
+
     public static Doctor createDoctor(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
         PersonValidator.validatePersonData(firstName, lastName, dateOfBirth, contactInfo, pesel);
         UUID id = UUID.randomUUID();
