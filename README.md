@@ -37,9 +37,9 @@
 - [ ] Skorzystaj z prostego narzędzia, np. Excalidraw.
 
 ##### Grafik lekarzy
-- [ ] Utwórz grafik pracy lekarza zawierający godziny pracy w wybranym dniu.
-- [ ] Dodaj możliwość pobierania grafików lekarza na najbliższy tydzień.
-- [ ] Zaimplementuj testy jednostkowe.
+- [x] Utwórz grafik pracy lekarza zawierający godziny pracy w wybranym dniu.
+- [x] Dodaj możliwość pobierania grafików lekarza na najbliższy tydzień.
+- [x] Zaimplementuj testy jednostkowe.
 
 ##### Wizyty lekarskie
 - [ ] Dodaj możliwość umawiania pacjentów na wizyty lekarskie:
