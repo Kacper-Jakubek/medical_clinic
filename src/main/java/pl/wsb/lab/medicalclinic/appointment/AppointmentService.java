@@ -18,7 +18,7 @@ public class AppointmentService {
 
     public void createAppointment(Patient patient, Doctor doctor, LocalDateTime startTime, LocalDateTime endTime) throws AppointmentException {
         if (!scheduleService.isDoctorAvailable(doctor.getId(), startTime, endTime)) {
-            throw new AppointmentException("Doctor is not available at this time.");
+            throw new AppointmentException(AppointmentException.DOCTOR_NOT_AVAILABLE);
         }
         Appointment appointment = new Appointment(doctor, patient, startTime, endTime);
         appointmentRepository.addAppointment(appointment);
@@ -35,7 +35,7 @@ public class AppointmentService {
     public void rescheduleAppointment(Appointment appointment, LocalDateTime newStartTime) throws AppointmentException {
         LocalDateTime newEndTime = newStartTime.plusMinutes(15);
         if (!scheduleService.isDoctorAvailable(appointment.getDoctor().getId(), newStartTime, newEndTime)) {
-            throw new AppointmentException("Doctor is not available at this time.");
+            throw new AppointmentException(AppointmentException.DOCTOR_NOT_AVAILABLE);
         }
         appointment.setStartTime(newStartTime);
         appointment.setEndTime(newEndTime);
@@ -44,7 +44,7 @@ public class AppointmentService {
 
     public void rescheduleAppointment(Appointment appointment, LocalDateTime newStartTime, LocalDateTime newEndTime) throws AppointmentException {
         if (!scheduleService.isDoctorAvailable(appointment.getDoctor().getId(), newStartTime, newEndTime)) {
-            throw new AppointmentException("Doctor is not available at this time.");
+            throw new AppointmentException(AppointmentException.DOCTOR_NOT_AVAILABLE);
         }
         appointment.setStartTime(newStartTime);
         appointment.setEndTime(newEndTime);
