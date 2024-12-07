@@ -56,9 +56,9 @@ class ScheduleServiceTest {
     void testCreateScheduleDoctorNotFound() {
         when(doctorRepository.findDoctorById(doctorId)).thenReturn(Optional.empty());
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            scheduleService.createSchedule(doctorId, date, startTime, endTime);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                scheduleService.createSchedule(doctorId, date, startTime, endTime)
+        );
 
         assertEquals("Doctor with ID: '" + doctorId.toString() + "' not found.", exception.getMessage());
     }
@@ -76,15 +76,15 @@ class ScheduleServiceTest {
         assertEquals(1, existingSchedule.getWorkingHours().size());
         assertTrue(existingSchedule.getWorkingHours().containsKey(date));
         assertEquals(1, existingSchedule.getWorkingHours().get(date).size());
-        assertEquals(startTime, existingSchedule.getWorkingHours().get(date).get(0).getStartTime());
-        assertEquals(endTime, existingSchedule.getWorkingHours().get(date).get(0).getEndTime());
+        assertEquals(startTime, existingSchedule.getWorkingHours().get(date).getFirst().getStartTime());
+        assertEquals(endTime, existingSchedule.getWorkingHours().get(date).getFirst().getEndTime());
     }
 
     @Test
     void testCreateScheduleWithNullDoctorId() {
-        assertThrows(NullPointerException.class, () -> {
-            scheduleService.createSchedule(null, date, startTime, endTime);
-        });
+        assertThrows(NullPointerException.class, () ->
+                scheduleService.createSchedule(null, date, startTime, endTime)
+        );
     }
 
     @Test
@@ -92,9 +92,9 @@ class ScheduleServiceTest {
         Doctor doctor = DoctorFactory.createDoctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, pesel, Collections.emptyList());
         when(doctorRepository.findDoctorById(doctorId)).thenReturn(Optional.of(doctor));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            scheduleService.createSchedule(doctorId, null, startTime, endTime);
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+                scheduleService.createSchedule(doctorId, null, startTime, endTime)
+        );
     }
 
     @Test
@@ -102,9 +102,9 @@ class ScheduleServiceTest {
         Doctor doctor = DoctorFactory.createDoctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, pesel, Collections.emptyList());
         when(doctorRepository.findDoctorById(doctorId)).thenReturn(Optional.of(doctor));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            scheduleService.createSchedule(doctorId, date, null, endTime);
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+                scheduleService.createSchedule(doctorId, date, null, endTime)
+        );
     }
 
     @Test
@@ -112,8 +112,8 @@ class ScheduleServiceTest {
         Doctor doctor = DoctorFactory.createDoctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, pesel, Collections.emptyList());
         when(doctorRepository.findDoctorById(doctorId)).thenReturn(Optional.of(doctor));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            scheduleService.createSchedule(doctorId, date, startTime, null);
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+                scheduleService.createSchedule(doctorId, date, startTime, null)
+        );
     }
 }

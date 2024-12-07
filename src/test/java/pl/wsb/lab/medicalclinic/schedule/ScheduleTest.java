@@ -33,7 +33,7 @@ class ScheduleTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(date));
         assertEquals(1, schedule.getWorkingHours().get(date).size());
-        assertEquals(workingHours, schedule.getWorkingHours().get(date).get(0));
+        assertEquals(workingHours, schedule.getWorkingHours().get(date).getFirst());
     }
 
 
@@ -50,7 +50,7 @@ class ScheduleTest {
         List<WorkingHours> nextWeekSchedule = schedule.getNextWeekSchedule();
 
         assertEquals(1, nextWeekSchedule.size());
-        assertEquals(workingHours, nextWeekSchedule.get(0));
+        assertEquals(workingHours, nextWeekSchedule.getFirst());
     }
 
     @Test

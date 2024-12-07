@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class Schedule {
     private final UUID doctorId;
-    private Map<LocalDate, List<WorkingHours>> workingHours;
+    private final Map<LocalDate, List<WorkingHours>> workingHours;
 
     Schedule(UUID doctorId, Map<LocalDate, List<WorkingHours>> workingHours) {
         this.doctorId = doctorId;

@@ -27,7 +27,7 @@ class ScheduleFactoryTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(date));
         assertEquals(1, schedule.getWorkingHours().get(date).size());
-        assertEquals(workingHours, schedule.getWorkingHours().get(date).get(0));
+        assertEquals(workingHours, schedule.getWorkingHours().get(date).getFirst());
     }
 
     @Test
@@ -45,7 +45,7 @@ class ScheduleFactoryTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(date));
         assertEquals(1, schedule.getWorkingHours().get(date).size());
-        assertEquals(workingHours, schedule.getWorkingHours().get(date).get(0));
+        assertEquals(workingHours, schedule.getWorkingHours().get(date).getFirst());
     }
 
     @Test
@@ -63,7 +63,7 @@ class ScheduleFactoryTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(parsedDate));
         assertEquals(1, schedule.getWorkingHours().get(parsedDate).size());
-        WorkingHours workingHours = schedule.getWorkingHours().get(parsedDate).get(0);
+        WorkingHours workingHours = schedule.getWorkingHours().get(parsedDate).getFirst();
         assertEquals(LocalTime.parse(startTime), workingHours.getStartTime());
         assertEquals(LocalTime.parse(endTime), workingHours.getEndTime());
     }
@@ -75,9 +75,9 @@ class ScheduleFactoryTest {
         String startTime = "17:00";
         String endTime = "09:00";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            ScheduleFactory.createSchedule(doctorId, date, startTime, endTime);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                ScheduleFactory.createSchedule(doctorId, date, startTime, endTime)
+        );
 
         assertEquals("Start time cannot be after end time", exception.getMessage());
     }
@@ -89,9 +89,9 @@ class ScheduleFactoryTest {
         String startTime = null;
         String endTime = "17:00";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            ScheduleFactory.createSchedule(doctorId, date, startTime, endTime);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                ScheduleFactory.createSchedule(doctorId, date, startTime, endTime)
+        );
 
         assertEquals("Start and end time cannot be null", exception.getMessage());
     }
