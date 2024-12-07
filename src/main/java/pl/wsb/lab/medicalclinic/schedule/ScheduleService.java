@@ -6,10 +6,7 @@ import pl.wsb.lab.medicalclinic.doctor.DoctorRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class ScheduleService {
     private final DoctorRepository doctorRepository;
@@ -29,31 +26,45 @@ public class ScheduleService {
         }
         Optional<Doctor> doctorOptional = doctorRepository.findDoctorById(doctorId);
         if (doctorOptional.isPresent()) {
+            LocalDateTime timeFrom = LocalDateTime.of(date, startTime);
+            LocalDateTime timeTo = LocalDateTime.of(date, endTime);
+            if (!isDoctorAvailableForSchedule(doctorId, timeFrom, timeTo)) {
+                throw new IllegalArgumentException("Doctor is not available during the specified time.");
+            }
             WorkingHours workingHours = new WorkingHours(date, startTime, endTime);
-            Schedule schedule = scheduleRepository.findByDoctorId(doctorId)
-                    .orElse(ScheduleFactory.createSchedule(doctorId, workingHours));
-            schedule.addWorkingHours(workingHours);
-            scheduleRepository.addSchedule(schedule);
+            Optional<Schedule> schedule = scheduleRepository.findByDoctorId(doctorId);
+            if (schedule.isPresent()) {
+                schedule.get().getWorkingHours().computeIfAbsent(date, k -> new ArrayList<>()).add(workingHours);
+            } else {
+                Schedule newSchedule = ScheduleFactory.createSchedule(doctorId, workingHours);
+                scheduleRepository.addSchedule(newSchedule);
+            }
         } else {
             throw new IllegalArgumentException("Doctor with ID: '" + doctorId.toString() + "' not found.");
         }
     }
 
-    public boolean isDoctorAvailable(UUID doctorId, LocalDateTime timeFrom, LocalDateTime timeTo) {
+    public boolean isDoctorAvailableForSchedule(UUID doctorId, LocalDateTime timeFrom, LocalDateTime timeTo) {
         Optional<Schedule> scheduleOptional = scheduleRepository.findByDoctorId(doctorId);
         if (scheduleOptional.isPresent()) {
             Schedule schedule = scheduleOptional.get();
             for (Map.Entry<LocalDate, List<WorkingHours>> entry : schedule.getWorkingHours().entrySet()) {
-                if (!entry.getKey().isEqual(timeFrom.toLocalDate())) {
+                if (!entry.getKey().equals(timeFrom.toLocalDate())) {
                     continue;
                 }
                 for (WorkingHours workingHours : entry.getValue()) {
-                    if (workingHours.getStartTime().isBefore(timeFrom.toLocalTime()) && workingHours.getEndTime().isAfter(timeTo.toLocalTime())) {
-                        return true;
+                    if ((workingHours.getStartTime().isBefore(timeTo.toLocalTime()) && workingHours.getEndTime().isAfter(timeFrom.toLocalTime())) ||
+                            (workingHours.getStartTime().equals(timeFrom.toLocalTime()) || workingHours.getEndTime().equals(timeTo.toLocalTime()))) {
+                        return false;
                     }
                 }
             }
         }
-        return false;
+        return true;
+    }
+
+
+    public Optional<Schedule> findScheduleByDoctorId(UUID doctorId) {
+        return scheduleRepository.findByDoctorId(doctorId);
     }
 }

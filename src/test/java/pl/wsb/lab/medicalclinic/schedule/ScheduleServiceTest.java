@@ -72,9 +72,12 @@ class ScheduleServiceTest {
 
         scheduleService.createSchedule(doctorId, date, startTime, endTime);
 
-        verify(scheduleRepository, times(1)).addSchedule(existingSchedule);
+        verify(scheduleRepository, never()).addSchedule(existingSchedule);
         assertEquals(1, existingSchedule.getWorkingHours().size());
         assertTrue(existingSchedule.getWorkingHours().containsKey(date));
+        assertEquals(1, existingSchedule.getWorkingHours().get(date).size());
+        assertEquals(startTime, existingSchedule.getWorkingHours().get(date).get(0).getStartTime());
+        assertEquals(endTime, existingSchedule.getWorkingHours().get(date).get(0).getEndTime());
     }
 
     @Test

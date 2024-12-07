@@ -66,7 +66,7 @@ class DoctorTest {
         doctor.addSpecialty(neurology);
 
         String expected = "Doctor{id=" + doctor.getId() +
-                "firstName='John', lastName='Doe', dateOfBirth=1980-01-01, contactInfo=ContactInfo{phoneNumber='123456789', email='test@example.com'}, pesel='12345678901', specialties=NEUROLOGY}";
+                ", firstName='John', lastName='Doe', dateOfBirth=1980-01-01, contactInfo=ContactInfo{phoneNumber='123456789', email='test@example.com'}, pesel='12345678901', specialties=NEUROLOGY}";
         assertEquals(expected, doctor.toString());
     }
 }

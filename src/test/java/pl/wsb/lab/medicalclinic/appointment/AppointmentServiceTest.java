@@ -42,7 +42,7 @@ class AppointmentServiceTest {
 
     @Test
     void testCreateAppointmentSuccess() throws AppointmentException {
-        when(scheduleService.isDoctorAvailable(doctor.getId(), startTime, endTime)).thenReturn(true);
+        when(scheduleService.isDoctorAvailableForSchedule(doctor.getId(), startTime, endTime)).thenReturn(true);
 
         appointmentService.createAppointment(patient, doctor, startTime, endTime);
 
@@ -51,7 +51,7 @@ class AppointmentServiceTest {
 
     @Test
     void testCreateAppointmentDoctorNotAvailable() {
-        when(scheduleService.isDoctorAvailable(doctor.getId(), startTime, endTime)).thenReturn(false);
+        when(scheduleService.isDoctorAvailableForSchedule(doctor.getId(), startTime, endTime)).thenReturn(false);
 
         AppointmentException exception = assertThrows(AppointmentException.class, () -> appointmentService.createAppointment(patient, doctor, startTime, endTime));
 
@@ -74,7 +74,7 @@ class AppointmentServiceTest {
         LocalDateTime newStartTime = startTime.plusDays(1);
         LocalDateTime newEndTime = newStartTime.plusMinutes(30);
 
-        when(scheduleService.isDoctorAvailable(doctor.getId(), newStartTime, newEndTime)).thenReturn(true);
+        when(scheduleService.isDoctorAvailableForSchedule(doctor.getId(), newStartTime, newEndTime)).thenReturn(true);
 
         appointmentService.rescheduleAppointment(appointment, newStartTime, newEndTime);
 
@@ -89,7 +89,7 @@ class AppointmentServiceTest {
         LocalDateTime newStartTime = startTime.plusDays(1);
         LocalDateTime newEndTime = newStartTime.plusMinutes(30);
 
-        when(scheduleService.isDoctorAvailable(doctor.getId(), newStartTime, newEndTime)).thenReturn(false);
+        when(scheduleService.isDoctorAvailableForSchedule(doctor.getId(), newStartTime, newEndTime)).thenReturn(false);
 
         AppointmentException exception = assertThrows(AppointmentException.class, () -> appointmentService.rescheduleAppointment(appointment, newStartTime, newEndTime));
 
