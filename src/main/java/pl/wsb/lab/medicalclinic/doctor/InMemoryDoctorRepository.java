@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class InMemoryDoctorRepository implements DoctorRepository {
     private final HashMap<UUID, Doctor> doctors = new HashMap<>();
@@ -25,8 +26,8 @@ public class InMemoryDoctorRepository implements DoctorRepository {
 
     @Override
     public List<Doctor> findDoctorsBySpecialty(MedicalSpecialty specialty) {
-        return List.copyOf(doctors.values().stream()
+        return doctors.values().stream()
                 .filter(doctor -> doctor.getSpecialties().contains(specialty))
-                .toList());
+                .collect(Collectors.toList());
     }
 }

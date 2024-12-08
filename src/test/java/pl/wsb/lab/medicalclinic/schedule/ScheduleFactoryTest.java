@@ -27,7 +27,7 @@ class ScheduleFactoryTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(date));
         assertEquals(1, schedule.getWorkingHours().get(date).size());
-        assertEquals(workingHours, schedule.getWorkingHours().get(date).getFirst());
+        assertEquals(workingHours, schedule.getWorkingHours().get(date).get(0));
     }
 
     @Test
@@ -45,7 +45,7 @@ class ScheduleFactoryTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(date));
         assertEquals(1, schedule.getWorkingHours().get(date).size());
-        assertEquals(workingHours, schedule.getWorkingHours().get(date).getFirst());
+        assertEquals(workingHours, schedule.getWorkingHours().get(date).get(0));
     }
 
     @Test
@@ -63,7 +63,7 @@ class ScheduleFactoryTest {
         assertEquals(1, schedule.getWorkingHours().size());
         assertTrue(schedule.getWorkingHours().containsKey(parsedDate));
         assertEquals(1, schedule.getWorkingHours().get(parsedDate).size());
-        WorkingHours workingHours = schedule.getWorkingHours().get(parsedDate).getFirst();
+        WorkingHours workingHours = schedule.getWorkingHours().get(parsedDate).get(0);
         assertEquals(LocalTime.parse(startTime), workingHours.getStartTime());
         assertEquals(LocalTime.parse(endTime), workingHours.getEndTime());
     }

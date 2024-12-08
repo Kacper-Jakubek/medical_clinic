@@ -76,8 +76,8 @@ class ScheduleServiceTest {
         assertEquals(1, existingSchedule.getWorkingHours().size());
         assertTrue(existingSchedule.getWorkingHours().containsKey(date));
         assertEquals(1, existingSchedule.getWorkingHours().get(date).size());
-        assertEquals(startTime, existingSchedule.getWorkingHours().get(date).getFirst().getStartTime());
-        assertEquals(endTime, existingSchedule.getWorkingHours().get(date).getFirst().getEndTime());
+        assertEquals(startTime, existingSchedule.getWorkingHours().get(date).get(0).getStartTime());
+        assertEquals(endTime, existingSchedule.getWorkingHours().get(date).get(0).getEndTime());
     }
 
     @Test

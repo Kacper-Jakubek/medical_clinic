@@ -50,7 +50,7 @@ class ScheduleTest {
         List<WorkingHours> nextWeekSchedule = schedule.getNextWeekSchedule();
 
         assertEquals(1, nextWeekSchedule.size());
-        assertEquals(workingHours, nextWeekSchedule.getFirst());
+        assertEquals(workingHours, nextWeekSchedule.get(0));
     }
 
     @Test

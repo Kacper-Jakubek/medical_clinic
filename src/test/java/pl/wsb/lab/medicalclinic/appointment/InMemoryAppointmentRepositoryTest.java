@@ -44,7 +44,7 @@ class InMemoryAppointmentRepositoryTest {
     void testFindByTime() {
         List<Appointment> result = repository.findByTime(LocalDateTime.now());
         assertFalse(result.isEmpty());
-        assertEquals(appointment, result.getFirst());
+        assertEquals(appointment, result.get(0));
     }
 
     @Test
@@ -57,7 +57,7 @@ class InMemoryAppointmentRepositoryTest {
     void testFindByPatient() {
         List<Appointment> result = repository.findByPatient(patient);
         assertFalse(result.isEmpty());
-        assertEquals(appointment, result.getFirst());
+        assertEquals(appointment, result.get(0));
     }
 
     @Test
@@ -71,7 +71,7 @@ class InMemoryAppointmentRepositoryTest {
     void testFindByDoctorId() {
         List<Appointment> result = repository.findByDoctorId(doctor.getId());
         assertFalse(result.isEmpty());
-        assertEquals(appointment, result.getFirst());
+        assertEquals(appointment, result.get(0));
     }
 
     @Test

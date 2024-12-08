@@ -92,7 +92,7 @@ public class Main {
         AppointmentService appointmentService = new AppointmentService(appointmentRepository, scheduleService);
         logger.debug("Umawiam pacjenta na wizytę lekarską");
         appointmentService.createAppointment(newPatient, newDoctor, LocalDateTime.of(LocalDate.now().plusDays(3), LocalTime.of(10, 30)));
-        logger.info("Utworzono wizytę: {}", appointmentRepository.findByPatient(newPatient).getFirst());
+        logger.info("Utworzono wizytę: {}", appointmentRepository.findByPatient(newPatient).get(0));
         // (5.2) Wizyta lekarska powinna zostać pomyślnie umówiona tylko i wyłącznie w godzinach pracy wybranego lekarza (na podstawie jego grafiku). W przeciwnym wypadku powinien zostać wyrzucony wyjątek, a wizyta nie powinna zostać utworzona.
         try {
             logger.debug("Próba umówienia pacjenta na wizytę w tym samym czasie");

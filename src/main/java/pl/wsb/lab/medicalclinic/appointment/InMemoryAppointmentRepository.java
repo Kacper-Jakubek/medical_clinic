@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class InMemoryAppointmentRepository implements AppointmentRepository {
     private final List<Appointment> appointments = new ArrayList<>();
@@ -38,6 +39,6 @@ public class InMemoryAppointmentRepository implements AppointmentRepository {
     public List<Appointment> findByDoctorId(UUID doctorId) {
         return appointments.stream()
                 .filter(appointment -> appointment.getDoctor().getId().equals(doctorId))
-                .toList();
+                .collect(Collectors.toList());
     }
 }

@@ -59,7 +59,7 @@ class DoctorServiceTest {
 
         List<Doctor> doctors = doctorService.findDoctorsBySpecialty(specialty);
         assertEquals(1, doctors.size());
-        assertEquals(doctor, doctors.getFirst());
+        assertEquals(doctor, doctors.get(0));
     }
 
     @Test
