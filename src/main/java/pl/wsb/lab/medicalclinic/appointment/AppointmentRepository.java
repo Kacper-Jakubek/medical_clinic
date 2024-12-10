@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public interface AppointmentRepository {
+interface AppointmentRepository {
     void addAppointment(Appointment appointment);
 
     void removeAppointment(Appointment appointment);

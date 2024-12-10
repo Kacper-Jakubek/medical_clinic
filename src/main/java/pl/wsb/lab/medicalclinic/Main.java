@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class Main {
+class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws AppointmentException {
@@ -48,7 +48,7 @@ public class Main {
         patientService.addPatient(anotherPatient2);
         patientService.searchByLastName("Kowalski").forEach(patient -> logger.info("Znaleziono pacjenta: {}", patient));
 
-        // (2.1) Jako pracownik działu HR chcę mieć możliwość utworzenia profilu zatrudnionego lekarza uwzględniając wszystkie jego specjalizacje.
+        // (2.1) Jako pracownik działu HR chce mieć możliwość utworzenia profilu zatrudnionego lekarza uwzględniając wszystkie jego specjalizacje.
         DoctorRepository doctorRepository = new InMemoryDoctorRepository();
         DoctorService doctorService = new DoctorService(doctorRepository);
         logger.debug("(2.1) Tworzenie profilu nowego lekarza");

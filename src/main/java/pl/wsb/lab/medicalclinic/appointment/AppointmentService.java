@@ -23,7 +23,7 @@ public class AppointmentService {
         this.scheduleService = scheduleService;
     }
 
-    public void createAppointment(Patient patient, Doctor doctor, LocalDateTime startTime, LocalDateTime endTime) throws AppointmentException {
+    void createAppointment(Patient patient, Doctor doctor, LocalDateTime startTime, LocalDateTime endTime) throws AppointmentException {
         if (!scheduleService.isDoctorAvailableForSchedule(doctor.getId(), startTime, endTime)) {
             throw new AppointmentException(AppointmentException.DOCTOR_NOT_AVAILABLE);
         }
@@ -54,11 +54,11 @@ public class AppointmentService {
         return !appointment.getEndTime().isBefore(startTime) && !appointment.getStartTime().isAfter(endTime);
     }
 
-    public void cancelAppointment(Appointment appointment) {
+    void cancelAppointment(Appointment appointment) {
         appointmentRepository.removeAppointment(appointment);
     }
 
-    protected boolean isDoctorAvailableForAppointment(UUID doctorId, LocalDateTime startTime, LocalDateTime endTime) {
+    boolean isDoctorAvailableForAppointment(UUID doctorId, LocalDateTime startTime, LocalDateTime endTime) {
         Optional<Schedule> scheduleOptional = scheduleService.findScheduleByDoctorId(doctorId);
         if (scheduleOptional.isPresent()) {
             Schedule schedule = scheduleOptional.get();
@@ -77,7 +77,7 @@ public class AppointmentService {
         return false;
     }
 
-    public void rescheduleAppointment(Appointment appointment, LocalDateTime newStartTime, LocalDateTime newEndTime) throws AppointmentException {
+    void rescheduleAppointment(Appointment appointment, LocalDateTime newStartTime, LocalDateTime newEndTime) throws AppointmentException {
         if (!scheduleService.isDoctorAvailableForSchedule(appointment.getDoctor().getId(), newStartTime, newEndTime)) {
             throw new AppointmentException(AppointmentException.DOCTOR_NOT_AVAILABLE);
         }

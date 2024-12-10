@@ -17,7 +17,6 @@ class DoctorTest {
     private Doctor doctor;
     private Doctor doctor1;
     private Doctor doctor2;
-    private UUID doctorId;
     private MedicalSpecialty cardiology;
     private MedicalSpecialty neurology;
 
@@ -28,7 +27,7 @@ class DoctorTest {
         neurology = MedicalSpecialty.NEUROLOGY;
         ContactInfo contactInfo = new ContactInfo("123456789", "test@example.com");
         doctor = new Doctor(UUID.randomUUID(), "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, "12345678901", Collections.emptyList());
-        doctorId = UUID.randomUUID();
+        UUID doctorId = UUID.randomUUID();
         doctor1 = new Doctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, "12345678901", Collections.emptyList());
         doctor2 = new Doctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, "12345678901", Collections.emptyList());
     }

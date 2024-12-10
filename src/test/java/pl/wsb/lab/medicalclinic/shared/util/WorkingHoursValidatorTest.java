@@ -21,7 +21,7 @@ class WorkingHoursValidatorTest {
         Constructor<WorkingHoursValidator> constructor = WorkingHoursValidator.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         InvocationTargetException exception = assertThrows(InvocationTargetException.class, constructor::newInstance);
-        assertTrue(exception.getCause() instanceof UnsupportedOperationException);
+        assertInstanceOf(UnsupportedOperationException.class, exception.getCause());
     }
 
     @Test

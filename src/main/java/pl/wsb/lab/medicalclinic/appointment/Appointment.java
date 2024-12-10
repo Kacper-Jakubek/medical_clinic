@@ -5,13 +5,13 @@ import pl.wsb.lab.medicalclinic.patient.Patient;
 
 import java.time.LocalDateTime;
 
-public class Appointment {
+class Appointment {
     private Doctor doctor;
     private final Patient patient;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public Appointment(Doctor doctor, Patient patient, LocalDateTime startTime, LocalDateTime endTime) {
+    Appointment(Doctor doctor, Patient patient, LocalDateTime startTime, LocalDateTime endTime) {
         this.doctor = doctor;
         this.patient = patient;
         this.startTime = startTime;

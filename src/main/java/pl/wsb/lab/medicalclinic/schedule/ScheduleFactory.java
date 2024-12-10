@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class ScheduleFactory {
+class ScheduleFactory {
     // Private constructor to prevent instantiation
     private ScheduleFactory() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");

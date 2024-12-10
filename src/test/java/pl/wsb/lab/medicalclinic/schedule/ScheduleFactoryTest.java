@@ -15,27 +15,24 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class ScheduleFactoryTest {
-    private DoctorRepository doctorRepository;
     private ScheduleRepository scheduleRepository;
     private ScheduleService scheduleService;
     private UUID doctorId;
     private LocalDate date;
     private LocalTime startTime;
     private LocalTime endTime;
-    private ContactInfo contactInfo;
-    private String pesel;
 
     @BeforeEach
     void setUp() {
-        doctorRepository = mock(DoctorRepository.class);
+        DoctorRepository doctorRepository = mock(DoctorRepository.class);
         scheduleRepository = mock(ScheduleRepository.class);
         scheduleService = new ScheduleService(doctorRepository, scheduleRepository);
         doctorId = UUID.randomUUID();
         date = LocalDate.now();
         startTime = LocalTime.of(9, 0);
         endTime = LocalTime.of(17, 0);
-        contactInfo = new ContactInfo("123456789", "test@example.com");
-        pesel = "12345678901";
+        ContactInfo contactInfo = new ContactInfo("123456789", "test@example.com");
+        String pesel = "12345678901";
     }
 
     @Test

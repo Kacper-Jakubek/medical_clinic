@@ -56,9 +56,6 @@ public abstract class Person {
         return firstName + " " + lastName;
     }
 
-    public int getAge() {
-        return LocalDate.now().getYear() - this.dateOfBirth.getYear();
-    }
 
     @Override
     public boolean equals(Object o) {

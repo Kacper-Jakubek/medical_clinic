@@ -20,7 +20,7 @@ public class DoctorFactory {
         return new Doctor(doctorId, firstName, lastName, dateOfBirth, contactInfo, pesel, specialties);
     }
 
-    public static Doctor createDoctor(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
+    private static Doctor createDoctor(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection<MedicalSpecialty> specialties) {
         PersonValidator.validatePersonData(firstName, lastName, dateOfBirth, contactInfo, pesel);
         UUID id = UUID.randomUUID();
         return new Doctor(id, firstName, lastName, dateOfBirth, contactInfo, pesel, specialties);

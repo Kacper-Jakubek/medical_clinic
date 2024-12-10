@@ -13,33 +13,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-public class PatientServiceTest {
+class PatientServiceTest {
 
     private PatientRepository patientRepository;
     private PatientService patientService;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         patientRepository = Mockito.mock(InMemoryPatientRepository.class);
         patientService = new PatientService(patientRepository);
     }
 
     @Test
-    public void testAddPatient() {
+    void testAddPatient() {
         Patient patient = new Patient("John", "Doe", LocalDate.of(1990, 1, 1), new ContactInfo("john.doe@example.com", "123456789"), "12345678901");
         patientService.addPatient(patient);
         verify(patientRepository, times(1)).addPatient(patient);
     }
 
     @Test
-    public void testRemovePatient() {
+    void testRemovePatient() {
         Patient patient = new Patient("John", "Doe", LocalDate.of(1990, 1, 1), new ContactInfo("john.doe@example.com", "123456789"), "12345678901");
         patientService.removePatient(patient);
         verify(patientRepository, times(1)).removePatient(patient);
     }
 
     @Test
-    public void testSearchByLastName() {
+    void testSearchByLastName() {
         String lastName = "Doe";
         List<Patient> expectedPatients = List.of(new Patient("John", "Doe", LocalDate.of(1990, 1, 1), new ContactInfo("john.doe@example.com", "123456789"), "12345678901"));
         when(patientRepository.findByLastName(lastName)).thenReturn(expectedPatients);
@@ -49,7 +49,7 @@ public class PatientServiceTest {
     }
 
     @Test
-    public void testSearchByPesel() {
+    void testSearchByPesel() {
         String pesel = "12345678901";
         Patient expectedPatient = new Patient("John", "Doe", LocalDate.of(1990, 1, 1), new ContactInfo("john.doe@example.com", "123456789"), pesel);
         when(patientRepository.findByPesel(pesel)).thenReturn(Optional.of(expectedPatient));
