@@ -15,8 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DoctorTest {
 
     private Doctor doctor;
+    private Doctor doctor1;
+    private Doctor doctor2;
+    private UUID doctorId;
     private MedicalSpecialty cardiology;
     private MedicalSpecialty neurology;
+
 
     @BeforeEach
     void setUp() {
@@ -24,6 +28,9 @@ class DoctorTest {
         neurology = MedicalSpecialty.NEUROLOGY;
         ContactInfo contactInfo = new ContactInfo("123456789", "test@example.com");
         doctor = new Doctor(UUID.randomUUID(), "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, "12345678901", Collections.emptyList());
+        doctorId = UUID.randomUUID();
+        doctor1 = new Doctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, "12345678901", Collections.emptyList());
+        doctor2 = new Doctor(doctorId, "John", "Doe", LocalDate.of(1980, 1, 1), contactInfo, "12345678901", Collections.emptyList());
     }
 
     @Test
@@ -69,4 +76,10 @@ class DoctorTest {
                 ", firstName='John', lastName='Doe', dateOfBirth=1980-01-01, contactInfo=ContactInfo{phoneNumber='123456789', email='test@example.com'}, pesel='12345678901', specialties=NEUROLOGY}";
         assertEquals(expected, doctor.toString());
     }
+
+    @Test
+    void testHashCode() {
+        assertEquals(doctor1.hashCode(), doctor2.hashCode());
+    }
+
 }

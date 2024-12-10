@@ -41,7 +41,11 @@ public class Main {
         logger.debug("(1.3) Wyszukiwanie pacjentów po nazwisku i wyświetlanie ich danych");
         logger.debug("Dodaję jeszcze jednego pacjenta o nazwisku Kowalski");
         Patient anotherPatient = PatientFactory.createPatient("Juliusz", "Kowalski", "1995-01-01", "515222333", "another_kowalski@example.com", "66101012345");
+        Patient anotherPatient1 = PatientFactory.createPatient("Juliusz", "Abc", "1995-01-01", "515222333", "another_kowalski@example.com", "66101012345");
+        Patient anotherPatient2 = PatientFactory.createPatient("Juliusz", "Def", "1995-01-01", "515222333", "another_kowalski@example.com", "66101012345");
         patientService.addPatient(anotherPatient);
+        patientService.addPatient(anotherPatient1);
+        patientService.addPatient(anotherPatient2);
         patientService.searchByLastName("Kowalski").forEach(patient -> logger.info("Znaleziono pacjenta: {}", patient));
 
         // (2.1) Jako pracownik działu HR chcę mieć możliwość utworzenia profilu zatrudnionego lekarza uwzględniając wszystkie jego specjalizacje.
@@ -65,7 +69,9 @@ public class Main {
         logger.debug("(2.4) Wyszukiwanie lekarzy po specjalizacji i wyświetlanie ich danych");
         logger.debug("Dodaję jeszcze jednego lekarza o specjalizacji DERMATOLOGY");
         Doctor anotherDoctor = DoctorFactory.createDoctor("Marcin", "Kaźmierczak", "1975-01-01", "515444555", "doktor101@example.com", "75010112345", "DERMATOLOGY");
+        Doctor anotherDoctor1 = DoctorFactory.createDoctor("Marcin", "Kaźmierczaka", "1975-01-01", "515444555", "doktor101@example.com", "75010112345", "KARDIOLOGY");
         doctorService.addDoctor(anotherDoctor);
+        doctorService.addDoctor(anotherDoctor1);
         doctorService.findDoctorsBySpecialty(MedicalSpecialty.valueOf("DERMATOLOGY")).forEach(doctor -> logger.info("Znaleziono lekarza: {}", doctor));
 
         // (3.1) Jako architekt oprogramowania chcę mieć dostęp do prostej dokumentacji aplikacji zawierającą diagram klas. Diagram powinien zawierać informacje: o wszystkich klasach użytych w projekcie, ich polach oraz zależnościach między klasami.

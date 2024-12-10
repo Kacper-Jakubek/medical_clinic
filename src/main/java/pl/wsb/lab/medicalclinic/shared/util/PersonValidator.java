@@ -21,11 +21,11 @@ public class PersonValidator {
     /**
      * Validates the provided personal data for a person.
      *
-     * @param firstName the first name of the person, must not be null or empty
-     * @param lastName the last name of the person, must not be null or empty
+     * @param firstName   the first name of the person, must not be null or empty
+     * @param lastName    the last name of the person, must not be null or empty
      * @param dateOfBirth the date of birth of the person, must not be null or in the future
      * @param contactInfo the contact information of the person, must not be null and must contain a non-empty phone number
-     * @param pesel the PESEL number of the person, must be exactly 11 characters long
+     * @param pesel       the PESEL number of the person, must be exactly 11 characters long
      * @throws IllegalArgumentException if any of the validation checks fail
      */
     public static void validatePersonData(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel) {

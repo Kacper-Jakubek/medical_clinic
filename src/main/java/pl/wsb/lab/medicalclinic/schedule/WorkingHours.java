@@ -1,7 +1,6 @@
 package pl.wsb.lab.medicalclinic.schedule;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class WorkingHours {
@@ -25,14 +24,6 @@ public class WorkingHours {
 
     public LocalTime getEndTime() {
         return endTime;
-    }
-
-    public LocalDateTime getStartDateTime() {
-        return LocalDateTime.of(date, startTime);
-    }
-
-    public LocalDateTime getEndDateTime() {
-        return LocalDateTime.of(date, endTime);
     }
 
     @Override

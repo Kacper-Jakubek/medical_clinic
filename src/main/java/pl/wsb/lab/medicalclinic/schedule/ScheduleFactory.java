@@ -35,7 +35,7 @@ public class ScheduleFactory {
         return createSchedule(doctorId, workingHours);
     }
 
-    private static WorkingHours getWorkingHours(String date, String startTime, String endTime) {
+    static WorkingHours getWorkingHours(String date, String startTime, String endTime) {
         if (date == null || startTime == null || endTime == null) {
             throw new IllegalArgumentException("Start and end time cannot be null");
         }

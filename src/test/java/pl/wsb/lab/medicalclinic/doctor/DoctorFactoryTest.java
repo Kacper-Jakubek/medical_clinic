@@ -97,4 +97,40 @@ class DoctorFactoryTest {
                 DoctorFactory.createDoctor(doctorId, "John", "Doe", dob, contactInfo, pesel, Collections.emptyList()));
         assertEquals("Provided PESEL is not valid.", exception.getMessage());
     }
+
+    @Test
+    void testCreateDoctorWithValidStringData() {
+        String firstName = "John";
+        String lastName = "Doe";
+        String dateOfBirth = "1980-01-01";
+        String phoneNumber = "123456789";
+        String email = "test@example.com";
+        String pesel = "12345678901";
+        String medicalSpecialties = "";
+
+        Doctor doctor = DoctorFactory.createDoctor(firstName, lastName, dateOfBirth, phoneNumber, email, pesel, medicalSpecialties);
+
+        assertNotNull(doctor);
+        assertEquals(firstName, doctor.getFirstName());
+        assertEquals(lastName, doctor.getLastName());
+        assertEquals(LocalDate.of(1980, 1, 1), doctor.getDateOfBirth());
+        assertEquals(new ContactInfo(phoneNumber, email), doctor.getContactInfo());
+        assertEquals(pesel, doctor.getPesel());
+        assertTrue(doctor.getSpecialties().isEmpty());
+    }
+
+    @Test
+    void testCreateDoctorWithInvalidDateOfBirth() {
+        String firstName = "John";
+        String lastName = "Doe";
+        String dateOfBirth = "invalid-date";
+        String phoneNumber = "123456789";
+        String email = "test@example.com";
+        String pesel = "12345678901";
+        String medicalSpecialties = "";
+
+        assertThrows(IllegalArgumentException.class, () ->
+                DoctorFactory.createDoctor(firstName, lastName, dateOfBirth, phoneNumber, email, pesel, medicalSpecialties));
+    }
+
 }

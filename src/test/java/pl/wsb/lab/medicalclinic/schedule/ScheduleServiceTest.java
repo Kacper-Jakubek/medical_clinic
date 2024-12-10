@@ -116,4 +116,24 @@ class ScheduleServiceTest {
                 scheduleService.createSchedule(doctorId, date, startTime, null)
         );
     }
+
+    @Test
+    void testFindScheduleByDoctorIdWhenScheduleExists() {
+        Schedule schedule = new Schedule(doctorId, new HashMap<>());
+        when(scheduleRepository.findByDoctorId(doctorId)).thenReturn(Optional.of(schedule));
+
+        Optional<Schedule> result = scheduleService.findScheduleByDoctorId(doctorId);
+
+        assertTrue(result.isPresent());
+        assertEquals(schedule, result.get());
+    }
+
+    @Test
+    void testFindScheduleByDoctorIdWhenScheduleDoesNotExist() {
+        when(scheduleRepository.findByDoctorId(doctorId)).thenReturn(Optional.empty());
+
+        Optional<Schedule> result = scheduleService.findScheduleByDoctorId(doctorId);
+
+        assertFalse(result.isPresent());
+    }
 }
