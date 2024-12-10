@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > DateTimeParser</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pl.wsb.lab.medicalclinic.shared.util</a>
+</div>
+
+<h1>Coverage Summary for Class: DateTimeParser (pl.wsb.lab.medicalclinic.shared.util)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DateTimeParser</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (12/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pl.wsb.lab.medicalclinic.shared.util;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.LocalTime;
+&nbsp;import java.time.format.DateTimeFormatter;
+&nbsp;import java.time.format.DateTimeFormatterBuilder;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;import java.util.Locale;
+&nbsp;
+&nbsp;public class DateTimeParser {
+&nbsp;
+<b class="nc">&nbsp;    private DateTimeParser() {</b>
+<b class="nc">&nbsp;        throw new UnsupportedOperationException(&quot;This is a utility class and cannot be instantiated&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder()</b>
+<b class="fc">&nbsp;            .appendOptional(DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;))</b>
+<b class="fc">&nbsp;            .appendOptional(DateTimeFormatter.ofPattern(&quot;yyyy.MM.dd&quot;))</b>
+<b class="fc">&nbsp;            .appendOptional(DateTimeFormatter.ofPattern(&quot;dd.MM.yyyy&quot;))</b>
+<b class="fc">&nbsp;            .appendOptional(DateTimeFormatter.ofPattern(&quot;dd-MM-yyyy&quot;))</b>
+<b class="fc">&nbsp;            .toFormatter(Locale.ENGLISH);</b>
+&nbsp;
+&nbsp;    public static LocalDate parseDate(String date) throws DateTimeParseException {
+<b class="fc">&nbsp;        return LocalDate.parse(date, DATE_FORMATTER);</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    private static final DateTimeFormatter TIME_FORMATTER = new DateTimeFormatterBuilder()</b>
+<b class="fc">&nbsp;            .appendOptional(DateTimeFormatter.ofPattern(&quot;HH:mm&quot;))</b>
+<b class="fc">&nbsp;            .appendOptional(DateTimeFormatter.ofPattern(&quot;HH.mm&quot;))</b>
+<b class="fc">&nbsp;            .toFormatter(Locale.ENGLISH);</b>
+&nbsp;
+&nbsp;    public static LocalTime parseTime(String time) throws DateTimeParseException {
+<b class="fc">&nbsp;        return LocalTime.parse(time, TIME_FORMATTER);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 02:10</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > PersonValidator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pl.wsb.lab.medicalclinic.shared.util</a>
+</div>
+
+<h1>Coverage Summary for Class: PersonValidator (pl.wsb.lab.medicalclinic.shared.util)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PersonValidator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86,7%
+  </span>
+  <span class="absValue">
+    (13/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pl.wsb.lab.medicalclinic.shared.util;
+&nbsp;
+&nbsp;import pl.wsb.lab.medicalclinic.shared.model.ContactInfo;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;
+&nbsp;/**
+&nbsp; * Utility class for validating personal data.
+&nbsp; * This class provides methods to validate personal information such as name, date of birth, contact information, and PESEL number.
+&nbsp; * It also includes a method to parse a date from a string.
+&nbsp; * The class cannot be instantiated.
+&nbsp; */
+&nbsp;public class PersonValidator {
+&nbsp;
+&nbsp;    // Private constructor to prevent instantiation
+<b class="nc">&nbsp;    private PersonValidator() {</b>
+<b class="nc">&nbsp;        throw new UnsupportedOperationException(&quot;This is a utility class and cannot be instantiated&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Validates the provided personal data for a person.
+&nbsp;     *
+&nbsp;     * @param firstName   the first name of the person, must not be null or empty
+&nbsp;     * @param lastName    the last name of the person, must not be null or empty
+&nbsp;     * @param dateOfBirth the date of birth of the person, must not be null or in the future
+&nbsp;     * @param contactInfo the contact information of the person, must not be null and must contain a non-empty phone number
+&nbsp;     * @param pesel       the PESEL number of the person, must be exactly 11 characters long
+&nbsp;     * @throws IllegalArgumentException if any of the validation checks fail
+&nbsp;     */
+&nbsp;    public static void validatePersonData(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel) {
+<b class="fc">&nbsp;        if (firstName == null || firstName.isEmpty()) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;First name cannot be null or empty.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (lastName == null || lastName.isEmpty()) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Last name cannot be null or empty.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (dateOfBirth == null || dateOfBirth.isAfter(LocalDate.now())) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Date of birth cannot be null or in the future.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (contactInfo == null || contactInfo.getPhoneNumber().isEmpty()) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Phone number cannot be null or empty.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (pesel == null || pesel.length() != 11) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Provided PESEL is not valid.&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static LocalDate dateFromString(String date) {
+&nbsp;        LocalDate dob;
+&nbsp;        try {
+<b class="fc">&nbsp;            dob = DateTimeParser.parseDate(date);</b>
+<b class="fc">&nbsp;            return dob;</b>
+&nbsp;        } catch (DateTimeParseException e) {
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Provided date of birth is not in the correct format. Accepted formats are: \&quot;yyyy-MM-dd\&quot;, \&quot;yyyy.MM.dd\&quot;, \&quot;dd.MM.yyyy\&quot;, \&quot;dd-MM-yyyy\&quot;&quot;, e);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 02:10</div>
+</div>
+</body>
+</html>

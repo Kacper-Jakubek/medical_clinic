@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > WorkingHours</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pl.wsb.lab.medicalclinic.schedule</a>
+</div>
+
+<h1>Coverage Summary for Class: WorkingHours (pl.wsb.lab.medicalclinic.schedule)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WorkingHours</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (7/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pl.wsb.lab.medicalclinic.schedule;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.LocalTime;
+&nbsp;
+&nbsp;public class WorkingHours {
+&nbsp;    private final LocalDate date;
+&nbsp;    private final LocalTime startTime;
+&nbsp;    private final LocalTime endTime;
+&nbsp;
+<b class="fc">&nbsp;    public WorkingHours(LocalDate date, LocalTime startTime, LocalTime endTime) {</b>
+<b class="fc">&nbsp;        this.date = date;</b>
+<b class="fc">&nbsp;        this.startTime = startTime;</b>
+<b class="fc">&nbsp;        this.endTime = endTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getDate() {
+<b class="fc">&nbsp;        return date;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalTime getStartTime() {
+<b class="fc">&nbsp;        return startTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalTime getEndTime() {
+<b class="fc">&nbsp;        return endTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Date: &quot; + date + &quot;, Hours: &quot; + startTime + &quot;-&quot; + endTime;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 02:10</div>
+</div>
+</body>
+</html>

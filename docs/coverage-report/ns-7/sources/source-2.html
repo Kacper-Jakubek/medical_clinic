@@ -1,0 +1,187 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Person</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pl.wsb.lab.medicalclinic.shared.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Person (pl.wsb.lab.medicalclinic.shared.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Person</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (8/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (2/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78,9%
+  </span>
+  <span class="absValue">
+    (15/19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pl.wsb.lab.medicalclinic.shared.model;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public abstract class Person {
+&nbsp;    private String firstName;
+&nbsp;    private String lastName;
+&nbsp;    private final LocalDate dateOfBirth;
+&nbsp;    private ContactInfo contactInfo;
+&nbsp;    private final String pesel;
+&nbsp;
+<b class="fc">&nbsp;    protected Person(String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel) {</b>
+<b class="fc">&nbsp;        this.firstName = firstName;</b>
+<b class="fc">&nbsp;        this.lastName = lastName;</b>
+<b class="fc">&nbsp;        this.dateOfBirth = dateOfBirth;</b>
+<b class="fc">&nbsp;        this.contactInfo = contactInfo;</b>
+<b class="fc">&nbsp;        this.pesel = pesel;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getFirstName() {
+<b class="fc">&nbsp;        return firstName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFirstName(String firstName) {
+<b class="nc">&nbsp;        this.firstName = firstName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getLastName() {
+<b class="fc">&nbsp;        return lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLastName(String lastName) {
+<b class="nc">&nbsp;        this.lastName = lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getDateOfBirth() {
+<b class="fc">&nbsp;        return dateOfBirth;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public ContactInfo getContactInfo() {
+<b class="fc">&nbsp;        return contactInfo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setContactInfo(ContactInfo contactInfo) {
+<b class="nc">&nbsp;        this.contactInfo = contactInfo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getPesel() {
+<b class="fc">&nbsp;        return pesel;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public String getFullName() {
+<b class="nc">&nbsp;        return firstName + &quot; &quot; + lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="pc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        Person person = (Person) o;</b>
+<b class="fc">&nbsp;        return Objects.equals(pesel, person.pesel);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="fc">&nbsp;        return Objects.hashCode(pesel);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 02:10</div>
+</div>
+</body>
+</html>

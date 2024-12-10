@@ -1,0 +1,184 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Doctor</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pl.wsb.lab.medicalclinic.doctor</a>
+</div>
+
+<h1>Coverage Summary for Class: Doctor (pl.wsb.lab.medicalclinic.doctor)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Doctor</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (6/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (23/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pl.wsb.lab.medicalclinic.doctor;
+&nbsp;
+&nbsp;import pl.wsb.lab.medicalclinic.shared.model.ContactInfo;
+&nbsp;import pl.wsb.lab.medicalclinic.shared.model.Person;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;public class Doctor extends Person {
+&nbsp;    private final Set&lt;MedicalSpecialty&gt; specialties;
+&nbsp;    private final UUID id;
+&nbsp;
+&nbsp;    Doctor(UUID id, String firstName, String lastName, LocalDate dateOfBirth, ContactInfo contactInfo, String pesel, Collection&lt;MedicalSpecialty&gt; specialties) {
+<b class="fc">&nbsp;        super(firstName, lastName, dateOfBirth, contactInfo, pesel);</b>
+<b class="fc">&nbsp;        this.id = id;</b>
+<b class="pc">&nbsp;        this.specialties = specialties != null ? new HashSet&lt;&gt;(specialties) : new HashSet&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public UUID getId() {
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Set&lt;MedicalSpecialty&gt; getSpecialties() {
+<b class="fc">&nbsp;        return specialties;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addSpecialty(MedicalSpecialty specialty) {
+<b class="fc">&nbsp;        this.specialties.add(specialty);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void removeSpecialty(MedicalSpecialty specialty) {
+<b class="fc">&nbsp;        this.specialties.remove(specialty);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="pc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="pc">&nbsp;        if (!super.equals(o)) return false;</b>
+<b class="fc">&nbsp;        Doctor doctor = (Doctor) o;</b>
+<b class="fc">&nbsp;        return Objects.equals(id, doctor.id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="fc">&nbsp;        return Objects.hash(super.hashCode(), id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private String specialtiesToString() {
+<b class="fc">&nbsp;        StringJoiner specialtiesString = new StringJoiner(&quot;, &quot;);</b>
+<b class="fc">&nbsp;        for (MedicalSpecialty specialty : specialties) {</b>
+<b class="fc">&nbsp;            specialtiesString.add(specialty.toString());</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return specialtiesString.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;Doctor{&quot; +</b>
+&nbsp;                &quot;id=&quot; + id +
+<b class="fc">&nbsp;                &quot;, firstName=&#39;&quot; + getFirstName() + &#39;\&#39;&#39; +</b>
+<b class="fc">&nbsp;                &quot;, lastName=&#39;&quot; + getLastName() + &#39;\&#39;&#39; +</b>
+<b class="fc">&nbsp;                &quot;, dateOfBirth=&quot; + getDateOfBirth().toString() +</b>
+<b class="fc">&nbsp;                &quot;, contactInfo=&quot; + getContactInfo().toString() +</b>
+<b class="fc">&nbsp;                &quot;, pesel=&#39;&quot; + getPesel() + &#39;\&#39;&#39; +</b>
+<b class="fc">&nbsp;                &quot;, specialties=&quot; + specialtiesToString() +</b>
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-10 02:10</div>
+</div>
+</body>
+</html>
