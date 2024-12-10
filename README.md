@@ -1,5 +1,7 @@
 # medical_clinic
 
+![Build Status](https://github.com/Kacper-Jakubek/medical_clinic/actions/workflows/tests.yml/badge.svg)
+
 ### Lista zadań do wykonania
 
 #### Wymagania funkcjonalne
