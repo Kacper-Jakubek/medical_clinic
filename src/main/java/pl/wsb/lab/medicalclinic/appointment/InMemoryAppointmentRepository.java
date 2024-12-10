@@ -19,15 +19,16 @@ public class InMemoryAppointmentRepository implements AppointmentRepository {
     @Override
     public List<Appointment> findByTime(LocalDateTime time) {
         return appointments.stream()
-                .filter(appointment -> appointment.getStartTime().isBefore(time) && appointment.getEndTime().isAfter(time))
-                .toList();
+                .filter(appointment -> !appointment.getStartTime().isAfter(time)
+                        && !appointment.getEndTime().isBefore(time))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Appointment> findByPatient(Patient patient) {
         return appointments.stream()
                 .filter(appointment -> appointment.getPatient().equals(patient))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
